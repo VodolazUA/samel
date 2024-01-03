@@ -1,7 +1,7 @@
 
 class Vehicle:
     
-    
+
     def __init__(self, name, age):
         self.name = name
         self.__age = age
@@ -54,6 +54,7 @@ class ElectricCar(Car):
         else:
             print('Oh nooooo')
 
+
 class GasCar(Car):
     
     def fill_up(self):
@@ -62,17 +63,6 @@ class GasCar(Car):
 
 if __name__ == "__main__":
     
-    # print("-----------")
-
-    # car1 = GasCar("Golf GTI")
-    
-    # car1.drive()
-    # car1.change_gear(2)
-    # car1.change_gear(3)
-    # car1.stop()
-    # car1.honk()
-    # car1.fill_up()
-
     print("-----------")
 
     audi = ElectricCar("Audi e-tron", 3)
