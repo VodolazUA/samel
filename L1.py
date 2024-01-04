@@ -1,3 +1,4 @@
+# taks #3
 
 class Vehicle:
     
@@ -7,9 +8,9 @@ class Vehicle:
         print(f"New vehicle has been created: <{name}> (age: {self._age})")
 
     def __str__(self):
-        return f"{self.name} (age:{self._age})"
+        return f"{self.name} (age: {self._age})"
 
-    def drive(self):
+    def move(self):
         print(f"{self.name} is moving.")
     
     def stop(self):
@@ -19,7 +20,22 @@ class Vehicle:
         return self._age > car._age
 
 
+class Plane(Vehicle):
+    
+    def move(self):
+        print(f"{self.name} is flying.")
+    
+
+class Boat(Vehicle):
+    
+    def move(self):
+        print(f"{self.name} is sailing.")
+
+
 class Car(Vehicle):
+
+    def move(self):
+        print(f"{self.name} is driving.")
 
     def _is_engine_on(self):
         return True
@@ -39,7 +55,7 @@ class ElectricCar(Car):
     def _is_charged(self):
         return True
     
-    def drive(self):
+    def move(self):
         if (
             self._is_charged() and 
             self._is_engine_on() and 
@@ -58,24 +74,11 @@ class GasCar(Car):
 
 if __name__ == "__main__":
     
-    print("-----------")
-
-    audi = ElectricCar("Audi e-tron", 3)
-    audi.drive()
-    audi.change_gear("Drive mode")
-    audi.stop()
-    audi.change_gear("Reverse mode")
-    audi.stop()
-    audi.honk()
-
-    tesla = ElectricCar("Tesla model Y", 1)
-    tesla.drive()
-    tesla.change_gear("Drive mode")
-    tesla.stop()
-    tesla.change_gear("Reverse mode")
-    tesla.stop()
-    tesla.honk()
-
-    print(
-        f"<{tesla}> is older than <{audi}>: {tesla.is_older_than(audi)}"   
-    )
+    vehicles = []
+    vehicles.append(Boat("Pirogoff", 47))
+    vehicles.append(Plane("Boeing 777", 12))
+    vehicles.append(ElectricCar("Tesla Model 3 Dual Motor", 2))
+    vehicles.append(GasCar("Audi RS6", 1))
+    
+    for v in vehicles:
+        v.move()
