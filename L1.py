@@ -21,12 +21,6 @@ class Vehicle:
 
 class Car(Vehicle):
 
-    def _is_engine_on(self):
-        return True
-    
-    def _are_wheels_rotating(self):
-        return True
-    
     def change_gear(self, new_gear):
         print(f"Current gear is {new_gear}.")
 
@@ -35,19 +29,9 @@ class Car(Vehicle):
       
 
 class ElectricCar(Car):
-    
-    def _is_charged(self):
-        return True
-    
+        
     def drive(self):
-        if (
-            self._is_charged() and 
-            self._is_engine_on() and 
-            self._are_wheels_rotating()
-        ):
-            print(f"{self.name} is moving (eco).")
-        else:
-            print('Oh nooooo')
+        print(f"{self.name} is moving (eco).")
 
 
 class GasCar(Car):
@@ -57,8 +41,6 @@ class GasCar(Car):
 
 
 if __name__ == "__main__":
-    
-    print("-----------")
 
     audi = ElectricCar("Audi e-tron", 3)
     audi.drive()
