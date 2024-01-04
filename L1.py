@@ -106,7 +106,7 @@ if __name__ == "__main__":
     for vehicle in vehicles:
         print(vehicle, vehicle.move())
 
-    # відбір ТЗ які НЕ на ходу
+    # відбір ТЗ які НЕ на ходу  
     unoperable = Vehicle.get_unoperable(vehicles)
     print("\nThere is a list of unoperable vehicles:")
     for uv in unoperable:
