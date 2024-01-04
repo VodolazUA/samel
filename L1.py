@@ -111,3 +111,4 @@ if __name__ == "__main__":
     print("\nThere is a list of unoperable vehicles:")
     for uv in unoperable:
         print("-", uv)
+        
