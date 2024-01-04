@@ -1,27 +1,22 @@
 
 class Vehicle:
     
-
     def __init__(self, name, age):
         self.name = name
-        self.__age = age
-        print(f"New vehicle has been created: <{name}>")
+        self._age = age
+        print(f"New vehicle has been created: <{name}> (age: {self._age})")
 
     def __str__(self):
-        return f"{self.name} (age:{self.__age})"
+        return f"{self.name} (age:{self._age})"
 
     def drive(self):
         print(f"{self.name} is moving.")
-    
-    @property
-    def age(self):
-        return self.__age
     
     def stop(self):
         print(f"{self.name} has stopped.") 
 
     def is_older_than(self, car):
-        return self.age > car.age
+        return self._age > car._age
 
 
 class Car(Vehicle):
@@ -82,8 +77,5 @@ if __name__ == "__main__":
     tesla.honk()
 
     print(
-        f"{tesla} is older than {audi}: {tesla.is_older_than(audi)}"   
+        f"<{tesla}> is older than <{audi}>: {tesla.is_older_than(audi)}"   
     )
-    
-    print("Audi's age is:", audi.age)  # .age - это функция, которая задекорирована под проперти
-    # значение возраста хранится в car.__age
