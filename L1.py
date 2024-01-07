@@ -12,12 +12,12 @@ class Vehicle(ABC):
         
         print(f"New vehicle has been created: <{self.name}> (age: {self._age}), operable={self.__operable}")
 
-
     def get_operable_state(self):
         return self.__operable
     
     def __str__(self):
         return f"{self.name}"
+
     
     @abstractclassmethod
     def move(self) -> str:
@@ -28,7 +28,7 @@ class Vehicle(ABC):
 
     def is_older_than(self, car):
         return self._age > car._age
-    
+
     @classmethod
     def get_unoperable(cls, vehicles):
         unoperable = [vehicle for vehicle in vehicles if vehicle.move() == ""]
