@@ -12,6 +12,7 @@ class Vehicle(ABC):
         
         print(f"New vehicle has been created: <{self.name}> (age: {self._age}), operable={self.__operable}")
 
+
     def get_operable_state(self):
         return self.__operable
     
@@ -58,12 +59,6 @@ class Car(Vehicle):
     def move(self) -> str:
         pass
 
-    def _is_engine_on(self):
-        return True
-    
-    def _are_wheels_rotating(self):
-        return True
-    
     def change_gear(self, new_gear):
         print(f"Current gear is {new_gear}.")
 
@@ -85,7 +80,7 @@ class ElectricCar(Car):
             return "is driving (super mega eco green)."
         else:
             return ""
-
+          
 
 class GasCar(Car):
 
