@@ -5,8 +5,6 @@ from abc import ABC, abstractclassmethod
 
 class Vehicle(ABC):
     
-    MOVE_STATEMENT = "is moving."
-
     def __init__(self, name: str, age: int, operable=True):
         self.name = name
         self._age = age
@@ -21,7 +19,7 @@ class Vehicle(ABC):
         return f"{self.name}"
     
     @abstractclassmethod
-    def move(self):
+    def move(self) -> str:
         pass
         
     def stop(self):
@@ -37,23 +35,19 @@ class Vehicle(ABC):
 
 
 class Plane(Vehicle):
-    
-    MOVE_STATEMENT = "is flying."
 
     def move(self):
         if self.get_operable_state():
-            return self.MOVE_STATEMENT
+            return "is flying."
         else:
             return ""
     
 
 class Boat(Vehicle):
-    
-    MOVE_STATEMENT = "is sailing."
 
     def move(self):
         if self.get_operable_state():
-            return self.MOVE_STATEMENT
+            return "is sailing."
         else:
             return ""
 
@@ -61,7 +55,7 @@ class Boat(Vehicle):
 class Car(Vehicle):
     
     @abstractclassmethod
-    def move(self):
+    def move(self) -> str:
         pass
 
     def _is_engine_on(self):
@@ -78,42 +72,40 @@ class Car(Vehicle):
       
 
 class ElectricCar(Car):
-    
-    MOVE_STATEMENT = "is driving (super mega eco green)."
 
-    def move(self):
-        if self.get_operable_state():
-            return self.MOVE_STATEMENT
-        else:
-            return ""
-    
     def _is_charged(self):
         return True
     
-    def move(self):
+    def move(self) -> str:
         if (
             self._is_charged() and 
             self._is_engine_on() and 
             self._are_wheels_rotating()
         ):
-            return self.MOVE_STATEMENT
+            return "is driving (super mega eco green)."
         else:
             return ""
 
 
 class GasCar(Car):
-    
-    MOVE_STATEMENT = "is driving."
 
-    def move(self):
+    def move(self) -> str:
         if self.get_operable_state():
-            return self.MOVE_STATEMENT
+            return "is driving."
         else:
             return ""
         
     def fill_up(self):
         print(f"{self.name} has been filled up.")
 
+
+class Sled(Vehicle):
+    
+    def move(self) -> str:
+        if self.get_operable_state():
+            return "is sliding."
+        else:
+            return ""
 
 if __name__ == "__main__":
     
@@ -122,6 +114,7 @@ if __name__ == "__main__":
     vehicles.append(Plane("Boeing 777", 12, False))
     vehicles.append(ElectricCar("Tesla Model 3 Dual Motor", 2))
     vehicles.append(GasCar("Audi RS6", 1, True))
+    vehicles.append(Sled("Santa's Lamba", 999))
     
     print("\n---------\n")
 
